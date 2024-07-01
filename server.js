@@ -12,14 +12,11 @@ app.get('/api',(req, res) => {
 
   var ip = req.headers['x-forwarded-for'] || req.socket.remoteAddress 
 
-  console.log(ip)
+  ip = ip.split(",")[0]
   var geo = geoip.lookup(ip);
-  console.log(geo)
-
-
         res.json({
             "client_ip": ip,
-            "location":  geo,
+            "location":  geo.city,
             "greeting": `Hello ${req.query.visitor_name}`
 
         });
