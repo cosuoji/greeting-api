@@ -1,6 +1,6 @@
 import express from "express"
 import bodyParser from "body-parser"
-//import ip from "ip"
+import ip from "ip"
 import geoip from "geoip-lite"
 
 const app = express()
@@ -15,7 +15,7 @@ app.get('/api',(req, res) => {
   console.log(geo)
         res.json({
             "client_ip": ip,
-            "location":  geo.city,
+            "location":  "here",
             "greeting": `Hello ${req.query.visitor_name}`
 
         });
