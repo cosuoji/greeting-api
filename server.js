@@ -10,13 +10,14 @@ const PORT = 3000;
 app.get('/api',(req, res) => {
        
   let ip = req.socket.remoteAddress
+  console.log(ip)
   var geo = geoip.lookup(ip);
   console.log(geo)
 
 
         res.json({
             "client_ip": ip,
-            "location":  geo.city,
+            "location":  "nah",
             "greeting": `Hello ${req.query.visitor_name}`
 
         });
