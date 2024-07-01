@@ -4,12 +4,14 @@ import geoip from "geoip-lite"
 
 const app = express()
 const PORT = 3000;
-
+app.set('trust proxy', true)
 
 
 app.get('/api',(req, res) => {
        
-  let ip = req.socket.remoteAddress
+
+  var ip = req.headers['x-forwarded-for'] || req.socket.remoteAddress 
+
   console.log(ip)
   var geo = geoip.lookup(ip);
   console.log(geo)
@@ -17,7 +19,7 @@ app.get('/api',(req, res) => {
 
         res.json({
             "client_ip": ip,
-            "location":  "nah",
+            "location":  geo,
             "greeting": `Hello ${req.query.visitor_name}`
 
         });
