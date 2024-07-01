@@ -10,7 +10,7 @@ app.set('trust proxy', true) //helps you get the IP if it's behind a proxy
 
 
 
-app.get('/api',(req, res) => {
+app.get('/api/hello',(req, res) => {
        
 
   var ip = req.headers['x-forwarded-for'] || req.socket.remoteAddress //get's the IP addess
