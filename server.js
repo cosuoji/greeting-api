@@ -17,6 +17,8 @@ app.get('/api',(req, res) => {
   ip = ip.split(",")[0]
   var geo = geoip.lookup(ip);
 
+  const nameOfUser = req.query.visitor_name || "Guest"
+
   let weather = new OpenWeatherAPI({
     key: "6413e35f562912c5b0596ddcb372f384",
     locationName: geo.city,
@@ -28,7 +30,7 @@ app.get('/api',(req, res) => {
     res.json({
         "client_ip": ip,
         "location": geo.city,
-        "greeting": `Hello ${req.query.visitor_name}, the weather is ${data.weather.temp.cur}F`
+        "greeting": `Hello ${nameOfUser}, the weather is ${data.weather.temp.cur}F`
     })
 })
 
