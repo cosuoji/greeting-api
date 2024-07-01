@@ -22,8 +22,9 @@ app.get('/api',
         });
     });
  
-app.listen(PORT,
+app.listen(PORT,"0.0.0.0",
     function (err) {
         if (err) console.log(err);
         console.log("Server listening on PORT", PORT);
     });
+
