@@ -8,8 +8,7 @@ const PORT = 3000;
 
 
 
-app.get('/api',
-        async (req, res) => {
+app.get('/api',(req, res) => {
        
   var ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
   var geo = geoip.lookup(ip);
